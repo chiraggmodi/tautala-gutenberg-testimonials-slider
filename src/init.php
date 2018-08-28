@@ -76,8 +76,8 @@ add_action( 'enqueue_block_editor_assets', 'tautala_editor_assets' );
  * Enqueue assets for the frontend only
  */
 function tautala_client_assets() {
-	wp_enqueue_script( 'slider-js', plugins_url( 'src/siema.min.js', dirname( __FILE__ ) ), null, true );
-	wp_enqueue_script( 'tautala-js', plugins_url( 'src/client.js', dirname( __FILE__ ) ), array('slider-js'), true );
+	wp_enqueue_script( 'slider-js', plugins_url( 'src/siema.min.js', dirname( __FILE__ ) ), array('jquery'), true );
+	wp_enqueue_script( 'tautala-js', plugins_url( 'src/client.js', dirname( __FILE__ ) ), array('jquery', 'slider-js'), true );
 }
 
 add_action( 'wp_enqueue_scripts', 'tautala_client_assets' );

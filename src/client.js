@@ -1,4 +1,4 @@
-window.onload = function() {
+jQuery( function( $ ) {
 	const slider = new Siema( {
 		selector: '.siema',
 		loop: true,
@@ -41,4 +41,4 @@ window.onload = function() {
 
 	// Trigger pagination creator
 	slider.addPagination();
-};
+} );

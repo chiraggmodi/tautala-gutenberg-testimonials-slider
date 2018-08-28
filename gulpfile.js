@@ -7,6 +7,8 @@ gulp.task( 'release', () =>
 			[
 				'dist/*',
 				'src/*.php',
+				'src/client.js',
+				'src/siema.min.js',
 				'assets/*.jpg',
 				'assets/*.svg',
 				'readme.txt',
