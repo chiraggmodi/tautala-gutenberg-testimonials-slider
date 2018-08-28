@@ -16,6 +16,6 @@ gulp.task( 'release', () =>
 				base: './',
 			}
 		)
-		.pipe( zip( 'tumbili-mailchimp-for-gutenberg.zip' ) )
+		.pipe( zip( 'tautala-testimonials.zip' ) )
 		.pipe( gulp.dest( './' ) )
 );

@@ -1,86 +1,44 @@
-function tumbiliSubmitForm() {
-	const form = document.getElementById( 'tumbili-form' );
-	const loader = document.querySelector( '.tumbili-loader' );
-	const data = {};
-
-	data.fname = document.getElementById( 'FNAME' ) ?
-		document.getElementById( 'FNAME' ).value :
-		'';
-	data.lname = document.getElementById( 'LNAME' ) ?
-		document.getElementById( 'LNAME' ).value :
-		'';
-	data.email = document.getElementById( 'tumbiliEmail' ) ?
-		document.getElementById( 'tumbiliEmail' ).value :
-		'';
-
-	data.apikey = form.dataset.apikey;
-	data.listID = form.dataset.listid;
-	data.dc = form.dataset.apikey.split( '-' )[ 1 ];
-
-	sendRequestViaAJAX( data, form, loader );
-}
-
-function sendRequestViaAJAX( formData, form, loader ) {
-	jQuery.ajax( {
-		url: tumbili.ajax_url,
-		type: 'post',
-		data: {
-			action: 'tumbili_mailchimp_add_subscriber',
-			formData,
-		},
-		dataType: 'json',
-		beforeSend: () => {
-			form.classList.toggle( 'isSubmitting' );
-			loader.classList.toggle( 'is-hiding' );
-		},
-		success: response => {
-			showApiResult( response );
-		},
-		complete: () => {
-			form.classList.toggle( 'isSubmitting' );
-			loader.classList.toggle( 'is-hiding' );
-		},
+window.onload = function() {
+	const slider = new Siema( {
+		selector: '.siema',
+		loop: true,
+		onChange: onChangeCallback,
+		duration: 300,
 	} );
-}
 
-function showApiResult( response ) {
-	console.log( response );
-	let title;
+	setInterval(
+		() => slider.next(),
+		parseInt( slider.selector.dataset.delay ) * 1000
+	);
 
-	if ( response.status === 400 ) {
-		switch ( response.title ) {
-			case 'Forgotten Email Not Subscribed':
-				title =
-					'Looks like you unsubscribed from this list previously, please contact us to resubscribe';
-				break;
-			case 'Member Exists':
-				title = '😄 Looks you are already subscribed';
-				break;
-			default:
-				title = `Oops something wen't wrong: ${ response.title }`;
-		}
-	} else {
-		title = '🎉 You have subscribed. Please check your inbox for confirmation.';
+	function onChangeCallback() {
+		const btns = document.querySelectorAll( '.tautala-pagination-button' );
+		btns.forEach( ( btn, i ) => {
+			if ( btn.classList && this.currentSlide !== i ) {
+				btn.classList.remove( 'active' );
+			} else {
+				btn.classList.add( 'active' );
+			}
+		} );
 	}
 
-	toggleForm( title );
-}
+	// Add a function that generates pagination to prototype
+	Siema.prototype.addPagination = function() {
+		for ( let i = 0; i < this.innerElements.length; i++ ) {
+			const btn = document.createElement( 'button' );
+			btn.className = 'tautala-pagination-button';
+			if ( i === 0 ) {
+				btn.className += ' active';
+			}
+			//btn.textContent = i;
+			btn.addEventListener( 'click', () => {
+				this.goTo( i );
+			} );
+			document.querySelector( '.tautala-pagination' ).appendChild( btn );
+			//this.selector.appendChild( btn );
+		}
+	};
 
-function toggleForm( title = '' ) {
-	const formContainer = document.querySelector( '.tumbili-container' );
-	const responseContainer = document.querySelector( '.tumbili-response' );
-	formContainer.classList.toggle( 'is-hiding' );
-	responseContainer.classList.toggle( 'is-hiding' );
-	responseContainer.innerHTML = title;
-}
-
-window.onload = function() {
-	document.getElementById( 'tumbili-form' ).addEventListener( 'submit', evt => {
-		evt.preventDefault();
-		tumbiliSubmitForm();
-	} );
-
-	document.querySelector( '.tumbili-response' ).addEventListener( 'click', () => {
-		toggleForm();
-	} );
+	// Trigger pagination creator
+	slider.addPagination();
 };

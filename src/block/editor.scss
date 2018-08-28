@@ -5,17 +5,28 @@
  * which makes it higher in priority.
  */
 
-.wp-block-cgb-block-gutengram {
+.editor--slides-container {
+	overflow-x: auto;
+	overflow-y: hidden;
+	white-space: nowrap;
+	width: 100%;
+	scroll-snap-type: mandatory;
+	scroll-snap-points-x: repeat(100%);
+	> li {
+		display: inline-flex;
+		align-content: center;
+		width: 100%;
+		flex-wrap: wrap;
+		margin-bottom: 0;
+	}
+	.tautala-text {
+	}
 }
 
-.tumbili-submit {
-	color: #fff;
-	padding: 6px 9px;
-	font-size: 13px;
-	transition: all 0.5s ease;
-	border-width: 0px;
-	&:hover,
-	&:active {
-		background-color: darken($blue, 5%);
-	}
+.tautala-image-wrapper {
+	position: relative;
+}
+
+button.has-svg {
+	display: flex;
 }

@@ -1,5 +1,5 @@
 /**
- * BLOCK: tumbili: mailchimp for Gutenberg
+ * BLOCK: Tautala: Testimonials Slider
  */
 
 //  Import CSS.
@@ -8,10 +8,10 @@ import './editor.scss';
 
 import { attributes } from './attributes';
 import { default as edit } from './edit';
+import { default as save } from './save';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-
 /**
  * Register: aa Gutenberg Block.
  *
@@ -21,12 +21,12 @@ const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.b
  * @return {?WPBlock}          The block, if it has been successfully
  *                             registered; otherwise `undefined`.
  */
-registerBlockType( 'cgb/tumbili-mailchimp-for-gutenberg', {
+registerBlockType( 'cgb/tautala-testimonials', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
-	title: __( 'Tumbili: Mailchimp for Gutenberg' ), // Block title.
-	icon: 'email-alt', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
+	title: __( 'Tautala: Testimonials Slider' ), // Block title.
+	icon: 'admin-comments', // Block icon from Dashicons → https://developer.wordpress.org/resource/dashicons/.
 	category: 'common', // Block category — Group blocks together based on common traits E.g. common, formatting, layout widgets, embed.
-	keywords: [ __( 'tumbili' ), __( 'mailchimp' ) ],
+	keywords: [ __( 'tautala' ), __( 'mailchimp' ) ],
 	attributes,
 
 	/**
@@ -39,8 +39,5 @@ registerBlockType( 'cgb/tumbili-mailchimp-for-gutenberg', {
 	 * @link https://wordpress.org/gutenberg/handbook/block-api/block-edit-save/
 	 * @return {null} null
 	 */
-	save( { attributes, className } ) {
-		//gutenberg will save attributes we can use in server-side callback
-		return null;
-	},
+	save,
 } );

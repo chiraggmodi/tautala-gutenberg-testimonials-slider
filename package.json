@@ -1,5 +1,5 @@
 {
-	"name": "tumbili-mailchimp-for-gutenberg",
+	"name": "tautala-testimonials",
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
@@ -9,7 +9,8 @@
 	},
 	"dependencies": {
 		"cgb-scripts": "1.9.8",
-		"hoek": "^5.0.3"
+		"hoek": "^5.0.3",
+		"lodash": "^4.17.10"
 	},
 	"devDependencies": {
 		"gulp": "^3.9.1",

@@ -1,6 +1,6 @@
 === Plugin Name ===
 Contributors: gubbigubbi 	
-Tags: gutenberg, mailchimp, mailchimp signup, mailchimp form
+Tags: gutenberg, testimonials, slider
 Requires at least: 4.9.6
 Tested up to: 4.9.7
 Stable tag: 0.1
@@ -8,12 +8,12 @@ Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Easily and instantly preview your mailchimp feed live within the new editor experience. Adjust settings as neededm such as the number of columns and the spacing. More features to come!
+Gorgeous testimonials slider for Gutenberg.
 
 == Description ==
 
-## tumbili: mailchimp Feed for Gutenberg
-Easily and instantly preview your mailchimp feed live within the new editor (Gutenberg) experience. Adjust settings as neededm such as the number of columns and the spacing. More features to come. 
+## Tautala: Testimonials Slider for Gutenberg
+Easily add testimonials to your editor.
 
 ###Want to see a feature?
 ###### Feel free to tweet and say 👋 at me [@RhysClay](https://twitter.com/rhysclay/)
@@ -22,10 +22,10 @@ Easily and instantly preview your mailchimp feed live within the new editor (Gut
 
 Firstly make sure that you have the Gutenberg plugin installed.
 
-1. Install the tumbili plugin either via the WordPress plugin directory, or by uploading the files to your web server (in the /wp-content/plugins/ directory).
-1. Activate the tumbili plugin through the 'Plugins' screen in WordPress
+1. Install the tautala plugin either via the WordPress plugin directory, or by uploading the files to your web server (in the /wp-content/plugins/ directory).
+1. Activate the tautala plugin through the 'Plugins' screen in WordPress
 1. Get your Mailchimp API key and List ID: To do this login to mailchimp and [follow these steps] (https://medium.com/@arcomito/grabbing-your-mailchimp-api-key-and-list-id-for-mailchimp-integration-22ef4b20792f)
-1. Add the tumbili block to your editor, paste the API key/List ID into the block settings.
+1. Add the tautala block to your editor, paste the API key/List ID into the block settings.
 1. Your mailchimp signup form will now show in the editor, adjust the settings to see how it will look before publishing.
 
 == Frequently Asked Questions ==
@@ -41,7 +41,7 @@ This plugin is laid out using Flexbox, we do not have plans to support older bro
 
 == Screenshots ==
 
-1. Adding the tumbili block to the editor and adjusting the settings.
+1. Adding the tautala block to the editor and adjusting the settings.
 
 == Changelog ==
 

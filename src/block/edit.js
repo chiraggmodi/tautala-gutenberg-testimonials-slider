@@ -1,140 +1,176 @@
 //import Inspector from './inspector';
-const { Component, Fragment } = wp.element;
+import times from 'lodash/times';
+import icons from './icons';
 
-const { InspectorControls, ColorPalette } = wp.editor;
-const { PanelBody, PanelColor, TextControl, ToggleControl } = wp.components;
+const { Component } = wp.element;
+
+const { InspectorControls, RichText, MediaUpload } = wp.editor;
+const { RangeControl, Button } = wp.components;
 
 const { __ } = wp.i18n;
 
-export default class mailchimpEdit extends Component {
+export default class tautalaEdit extends Component {
 	constructor() {
 		super( ...arguments );
+		//this.onChangeImage = this.onChangeImage.bind( this );
 
 		this.state = {};
 	}
 
 	render() {
 		const {
-			attributes: {
-				showFirstName,
-				showLastName,
-				apiKey,
-				listID,
-				buttonBackground,
-				buttonColor,
-			},
+			attributes: { delay, slides, imgSize },
+			attributes,
 			className,
 			setAttributes,
+			isSelected,
 		} = this.props;
-
-		let firstNameInput;
-
-		if ( showFirstName ) {
-			firstNameInput = (
-				<div className="tumbili-form-control flex-grow">
-					<label htmlFor="firstName">
-						First Name
-						<input name="firstName" type="text" />
-					</label>
-				</div>
-			);
-		}
-
-		let lastNameInput;
-
-		if ( showLastName ) {
-			lastNameInput = (
-				<div className="tumbili-form-control flex-grow">
-					<label htmlFor="lasttName">
-						Last Name
-						<input name="lastName" type="text" />
-					</label>
-				</div>
-			);
-		}
-
-		const button = (
-			<input
-				style={ { color: buttonColor, background: buttonBackground } }
-				className="tumbili-submit"
-				type="submit"
-				value="Submit"
-			/>
-		);
-
-		let container;
-
-		if ( apiKey && listID ) {
-			container = (
-				<div className="display-flex tumbili-container">
-					{ firstNameInput }
-					{ lastNameInput }
-					<div className="tumbili-form-control flex-grow">
-						<label htmlFor="email">
-							Email
-							<input name="email" type="email" />
-						</label>
-					</div>
-					<div className="tumbili-form-control flex-grow flex-is-at-bottom">
-						{ button }
-					</div>
-				</div>
-			);
-		} else {
-			container = (
-				<div className={ className }>
-					To get started please add an API Key & List ID.
-				</div>
-			);
-		}
 
 		return (
 			<div className={ className }>
 				<InspectorControls>
-					<PanelBody title={ __( 'Form Options' ) }>
-						<TextControl
-							label={ __( 'Mailchimp API Key' ) }
-							value={ apiKey }
-							onChange={ apiKey => setAttributes( { apiKey } ) }
-						/>
-						<TextControl
-							label={ __( 'Mailchimp List ID' ) }
-							value={ listID }
-							onChange={ listID => setAttributes( { listID } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Show First Name?' ) }
-							checked={ showFirstName }
-							onChange={ showFirstName => setAttributes( { showFirstName } ) }
-						/>
-						<ToggleControl
-							label={ __( 'Show Last Name?' ) }
-							checked={ showLastName }
-							onChange={ showLastName => setAttributes( { showLastName } ) }
-						/>
-						<PanelColor
-							title={ __( 'Button Background Color' ) }
-							colorValue={ buttonBackground }
-						>
-							<ColorPalette
-								value={ buttonBackground }
-								onChange={ buttonBackground =>
-									setAttributes( { buttonBackground } )
-								}
-							/>
-						</PanelColor>
-						<PanelColor
-							title={ __( 'Button Text Color' ) }
-							colorValue={ buttonColor }
-						>
-							<ColorPalette
-								value={ buttonColor }
-								onChange={ buttonColor => setAttributes( { buttonColor } ) }
-							/>
-						</PanelColor>
-					</PanelBody>
+					<RangeControl
+						label={ __( 'Slides' ) }
+						value={ slides }
+						onChange={ nextSlides => {
+							setAttributes( {
+								slides: nextSlides,
+							} );
+						} }
+						min={ 1 }
+						max={ 6 }
+					/>
+					<RangeControl
+						label={ __( 'Delay (seconds)' ) }
+						value={ delay }
+						onChange={ nextdelay => {
+							setAttributes( {
+								delay: nextdelay,
+							} );
+						} }
+						min={ 1 }
+						max={ 12 }
+					/>
+
+					<RangeControl
+						label={ __( 'Image Size (px)' ) }
+						value={ imgSize }
+						onChange={ nextImg => {
+							setAttributes( {
+								imgSize: nextImg,
+							} );
+						} }
+						min={ 10 }
+						max={ 150 }
+						step={ 10 }
+					/>
 				</InspectorControls>
-				{ container }
+
+				<ul
+					className={ `editor--slides-container list-unstyled columns-${ slides }` }
+				>
+					{ times( slides, function( i ) {
+						const content = attributes[ 'slide_' + i + '_content' ];
+						const author = attributes[ 'slide_' + i + '_author' ];
+						const title = attributes[ 'slide_' + i + '_title' ];
+						const imgID = attributes[ 'slide_' + i + '_id' ];
+						const imgURL = attributes[ 'slide_' + i + '_url' ];
+
+						const onChangeImage = img => {
+							const image = new wp.api.models.Media( { id: img.id } )
+								.fetch()
+								.done( res => {
+									const thumb = res.media_details.sizes.thumbnail.source_url;
+									setAttributes( {
+										[ 'slide_' + i + '_id' ]: img.id,
+										[ 'slide_' + i + '_url' ]: thumb,
+									} );
+								} );
+						};
+
+						return (
+							<li key={ i }>
+								<div className="tautala-text">
+									<RichText
+										tagName="p"
+										multiline="p"
+										placeholder={ __( 'Add the testimonial content' ) }
+										onChange={ content =>
+											setAttributes( { [ 'slide_' + i + '_content' ]: content } )
+										}
+										value={ content }
+									/>
+								</div>
+								<div className="tautala-user">
+									{ ! imgID ? (
+										<MediaUpload
+											className="tautala-avatar"
+											onSelect={ onChangeImage }
+											type="image"
+											value={ imgID }
+											render={ ( { open } ) => (
+												<Button
+													className="components-button button button-large upload-image has-svg"
+													onClick={ open }
+												>
+													{ icons.upload }
+												</Button>
+											) }
+										/>
+									) : (
+										<div className="tautala-image-wrapper">
+											<img
+												src={ imgURL }
+												className="tautala-avatar"
+												alt=""
+												width={ imgSize }
+												height={ imgSize }
+											/>
+
+											{ isSelected ? (
+												<Button
+													className="remove-image has-svg"
+													onClick={ () => {
+														setAttributes( {
+															[ 'slide_' + i + '_id' ]: '',
+															[ 'slide_' + i + '_url' ]: '',
+														} );
+													} }
+												>
+													{ icons.remove }
+												</Button>
+											) : null }
+										</div>
+									) }
+
+									<div className="tautala-testimonial-info">
+										<RichText
+											tagName="h3"
+											className="tautala-testimonial-author"
+											multiline="p"
+											placeholder={ __( 'Add the testimonial author' ) }
+											onChange={ author =>
+												setAttributes( { [ 'slide_' + i + '_author' ]: author } )
+											}
+											value={ author }
+										/>
+
+										<RichText
+											tagName="small"
+											className="tautala-testimonial-title"
+											multiline="p"
+											placeholder={ __( 'Add the testimonial title' ) }
+											onChange={ title =>
+												setAttributes( { [ 'slide_' + i + '_title' ]: title } )
+											}
+											value={ title }
+										/>
+									</div>
+								</div>
+							</li>
+						);
+					} ) }
+				</ul>
 			</div>
 		);
 	}
