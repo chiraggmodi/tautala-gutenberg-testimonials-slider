@@ -93,7 +93,7 @@ export default class tautalaEdit extends Component {
 								<div className="tautala-text">
 									<RichText
 										tagName="p"
-										multiline="p"
+										className="tautala-text-content"
 										placeholder={ __( 'Add the testimonial content' ) }
 										onChange={ content =>
 											setAttributes( { [ 'slide_' + i + '_content' ]: content } )
@@ -147,7 +147,6 @@ export default class tautalaEdit extends Component {
 										<RichText
 											tagName="h3"
 											className="tautala-testimonial-author"
-											multiline="p"
 											placeholder={ __( 'Add the testimonial author' ) }
 											onChange={ author =>
 												setAttributes( { [ 'slide_' + i + '_author' ]: author } )
@@ -158,7 +157,6 @@ export default class tautalaEdit extends Component {
 										<RichText
 											tagName="small"
 											className="tautala-testimonial-title"
-											multiline="p"
 											placeholder={ __( 'Add the testimonial title' ) }
 											onChange={ title =>
 												setAttributes( { [ 'slide_' + i + '_title' ]: title } )

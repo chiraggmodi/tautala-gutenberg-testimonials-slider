@@ -1,4 +1,5 @@
 import times from 'lodash/times';
+//import classnames from 'classnames';
 
 const { Component } = wp.element;
 const { __ } = wp.i18n;
@@ -30,7 +31,11 @@ export default class tautalaSave extends Component {
 						return (
 							<li key={ i }>
 								<div className="tautala-text">
-									<p>{ content }</p>
+									<p
+										className={ `tautala-text-content tautala-text-content-${ i }` }
+									>
+										{ content }
+									</p>
 								</div>
 								<div className="tautala-user">
 									<div className="tautala-image-wrapper">
@@ -47,8 +52,16 @@ export default class tautalaSave extends Component {
 									</div>
 
 									<div className="tautala-testimonial-info">
-										<h3 className="tautala-testimonial-author">{ author }</h3>
-										<small className="tautala-testimonial-title">{ title }</small>
+										<h3
+											className={ `tautala-testimonial-author tautala-testimonial-author-${ i }` }
+										>
+											{ author }
+										</h3>
+										<small
+											className={ `tautala-testimonial-title tautala-testimonial-title-${ i }` }
+										>
+											{ title }
+										</small>
 									</div>
 								</div>
 							</li>

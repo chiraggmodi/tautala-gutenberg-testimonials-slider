@@ -12,13 +12,14 @@ export const attributes = {
 		default: 60,
 	},
 	slide_0_author: {
-		type: 'string',
-		default: 'Testimonial Author',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-0',
 	},
 	slide_0_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-0',
 	},
 	slide_0_title: {
 		type: 'string',
@@ -32,17 +33,19 @@ export const attributes = {
 		default: '',
 	},
 	slide_1_author: {
-		type: 'string',
-		default: 'Rhys Clay',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-1',
 	},
 	slide_1_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-1',
 	},
 	slide_1_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-1',
 	},
 	slide_1_id: {
 		type: 'number',
@@ -52,17 +55,19 @@ export const attributes = {
 		default: '',
 	},
 	slide_2_author: {
-		type: 'string',
-		default: 'Mike Jenkins',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-2',
 	},
 	slide_2_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-2',
 	},
 	slide_2_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-2',
 	},
 	slide_2_id: {
 		type: 'number',
@@ -72,17 +77,19 @@ export const attributes = {
 		default: '',
 	},
 	slide_3_author: {
-		type: 'string',
-		default: 'Mike Jenkins',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-3',
 	},
 	slide_3_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-3',
 	},
 	slide_3_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-3',
 	},
 	slide_3_id: {
 		type: 'number',
@@ -92,17 +99,19 @@ export const attributes = {
 		default: '',
 	},
 	slide_4_author: {
-		type: 'string',
-		default: 'Mike Jenkins',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-4',
 	},
 	slide_4_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-4',
 	},
 	slide_4_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-4',
 	},
 	slide_4_id: {
 		type: 'number',
@@ -112,17 +121,19 @@ export const attributes = {
 		default: '',
 	},
 	slide_5_author: {
-		type: 'string',
-		default: 'Mike Jenkins',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-author-5',
 	},
 	slide_5_content: {
-		type: 'string',
-		default:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-text-content-5',
 	},
 	slide_5_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-5',
 	},
 	slide_5_id: {
 		type: 'number',
