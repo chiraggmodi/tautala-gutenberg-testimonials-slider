@@ -1,6 +1,6 @@
-# tautala: mailchimp for Gutenberg 📷
+# Tautala: Testimonials Slider for Gutenberg
 
-Add a mailchimp signup form to your editor. Tweak it and test it before publishing #ganggang
+More to come
 
 ![alt text](https://github.com/gubbigubbi/tautala-mailchimp/blob/master/screenshot-3.jpg 'tautala in action baby!')
 
