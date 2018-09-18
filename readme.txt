@@ -47,3 +47,6 @@ This plugin is laid out using Flexbox, we do not have plans to support older bro
 
 = 0.1 =
 * First release.
+
+= 0.2 =
+* Bug Fixes

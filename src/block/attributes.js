@@ -22,8 +22,9 @@ export const attributes = {
 		selector: '.tautala-text-content-0',
 	},
 	slide_0_title: {
-		type: 'string',
-		default: 'Put your title in here',
+		type: 'array',
+		source: 'children',
+		selector: '.tautala-testimonial-title-0',
 	},
 	slide_0_id: {
 		type: 'number',
