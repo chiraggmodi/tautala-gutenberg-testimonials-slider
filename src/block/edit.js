@@ -5,9 +5,11 @@ import icons from './icons';
 const { Component } = wp.element;
 
 const { InspectorControls, RichText, MediaUpload } = wp.editor;
-const { RangeControl, Button } = wp.components;
+const { RangeControl, Button, ToggleControl } = wp.components;
 
 const { __ } = wp.i18n;
+
+import classnames from 'classnames';
 
 export default class tautalaEdit extends Component {
 	constructor() {
@@ -19,12 +21,19 @@ export default class tautalaEdit extends Component {
 
 	render() {
 		const {
-			attributes: { delay, slides, imgSize },
+			attributes: { delay, slides, imgSize, hasCircleImg },
 			attributes,
 			className,
 			setAttributes,
 			isSelected,
 		} = this.props;
+
+		const classes = classnames(
+			'editor--slides-container list-unstyled',
+			`columns-${ slides }`,
+			{ 'has-large-image': imgSize > 150 },
+			{ 'has-circular-image': hasCircleImg }
+		);
 
 		return (
 			<div className={ className }>
@@ -61,14 +70,21 @@ export default class tautalaEdit extends Component {
 							} );
 						} }
 						min={ 10 }
-						max={ 150 }
+						max={ 500 }
 						step={ 10 }
+					/>
+					<ToggleControl
+						label="Circular Image?"
+						checked={ hasCircleImg }
+						onChange={ hasCircleImg => {
+							setAttributes( {
+								hasCircleImg: hasCircleImg,
+							} );
+						} }
 					/>
 				</InspectorControls>
 
-				<ul
-					className={ `editor--slides-container list-unstyled columns-${ slides }` }
-				>
+				<ul className={ classes }>
 					{ times( slides, function( i ) {
 						const content = attributes[ 'slide_' + i + '_content' ];
 						const author = attributes[ 'slide_' + i + '_author' ];
@@ -80,7 +96,8 @@ export default class tautalaEdit extends Component {
 							const image = new wp.api.models.Media( { id: img.id } )
 								.fetch()
 								.done( res => {
-									const thumb = res.media_details.sizes.thumbnail.source_url;
+									const thumbSize = imgSize > 150 ? 'full' : 'thumbnail'; // use full size if too big
+									const thumb = res.media_details.sizes[ thumbSize ].source_url;
 									setAttributes( {
 										[ 'slide_' + i + '_id' ]: img.id,
 										[ 'slide_' + i + '_url' ]: thumb,

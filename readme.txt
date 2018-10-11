@@ -3,7 +3,7 @@ Contributors: gubbigubbi
 Tags: gutenberg, testimonials, slider
 Requires at least: 4.9.6
 Tested up to: 4.9.7
-Stable tag: 0.1
+Stable tag: 0.3
 Requires PHP: 5.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -42,3 +42,6 @@ Note: we plan to release a premium version of the plugin which will likely recei
 
 = 0.2 =
 * Bug Fixes
+
+= 0.3 =
+* Added large image option

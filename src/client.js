@@ -45,4 +45,8 @@ jQuery( function( $ ) {
 		// Trigger pagination creator
 		slider.addPagination();
 	}
+
+	$( '.tautala-avatar' ).click( e => {
+		$( e.target ).toggleClass( 'active' );
+	} );
 } );

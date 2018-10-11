@@ -14,6 +14,11 @@
 	}
 }
 
+.tautala-avatar {
+	margin-right: 1rem;
+	align-self: center;
+}
+
 .tautala-text {
 	white-space: normal;
 	width: 100%;
@@ -40,11 +45,6 @@
 	line-height: 1.2;
 	text-transform: uppercase;
 	letter-spacing: 1px;
-}
-
-.tautala-avatar {
-	border-radius: 100%;
-	margin-right: 1rem;
 }
 
 .list-unstyled {
@@ -78,4 +78,63 @@
 		background: #7261ee;
 		transform: scale(1.2);
 	}
+}
+
+// Circular images
+.wp-block-cgb-tautala-testimonials ul.has-circular-image {
+	.tautala-avatar {
+		border-radius: 100%;
+	}
+}
+
+// For a large image
+.wp-block-cgb-tautala-testimonials ul.has-large-image {
+	li {
+		display: flex;
+		flex-direction: column;
+	}
+	.tautala-text {
+		order: 3;
+		margin-top: 2rem;
+		> p {
+			&:last-of-type {
+				margin-bottom: 0;
+			}
+		}
+	}
+	.tautala-user {
+		flex-wrap: wrap; // allow wrap
+		flex: 1; // grow
+	}
+	.tautala-image-wrapper {
+		margin-bottom: 2rem;
+	}
+	.tautala-image-wrapper,
+	.tautala-testimonial-info {
+		display: flex;
+		flex: 1;
+		flex-basis: 100%;
+		justify-content: center;
+	}
+	.tautala-testimonial-info {
+		flex-direction: column;
+	}
+	.tautala-testimonial-info,
+	.tautala-text-content {
+		text-align: center;
+	}
+	.tautala-image-wrapper {
+		overflow: hidden;
+	}
+	.tautala-avatar {
+		cursor: pointer;
+		margin-right: 0;
+		transform: scale(1);
+		transition: all 0.5s ease;
+		&.active {
+			transform: scale(1.4);
+		}
+	}
+
+	// our zoom effect
 }

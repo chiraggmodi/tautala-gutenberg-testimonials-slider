@@ -1,27 +1,27 @@
 import times from 'lodash/times';
-//import classnames from 'classnames';
+import classnames from 'classnames';
 
 const { Component } = wp.element;
 const { __ } = wp.i18n;
 
 export default class tautalaSave extends Component {
-	constructor() {
-		super( ...arguments );
-	}
-
 	render() {
 		const {
-			attributes: { delay, slides, imgSize },
+			attributes: { delay, slides, imgSize, hasCircleImg },
 			attributes,
 			className,
 		} = this.props;
 
+		const classes = classnames(
+			'siema client--slides-container list-unstyled',
+			`columns-${ slides }`,
+			{ 'has-large-image': imgSize > 150 },
+			{ 'has-circular-image': hasCircleImg }
+		);
+
 		return (
 			<div className={ className }>
-				<ul
-					data-delay={ delay }
-					className={ `siema client--slides-container list-unstyled columns-${ slides }` }
-				>
+				<ul data-delay={ delay } className={ classes }>
 					{ times( slides, function( i ) {
 						const content = attributes[ 'slide_' + i + '_content' ];
 						const author = attributes[ 'slide_' + i + '_author' ];

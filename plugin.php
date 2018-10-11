@@ -5,7 +5,7 @@
  * Description: Got some testimonials? Show them in a nice little slider.
  * Author: gubbigubbi
  * Author URI: https://github.com/gubbigubbi/
- * Version: 0.2
+ * Version: 0.3
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *

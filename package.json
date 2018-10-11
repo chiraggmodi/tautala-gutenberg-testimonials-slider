@@ -9,6 +9,7 @@
 	},
 	"dependencies": {
 		"cgb-scripts": "1.9.8",
+		"classnames": "^2.2.6",
 		"hoek": "^5.0.3",
 		"lodash": "^4.17.10"
 	},

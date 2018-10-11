@@ -11,6 +11,10 @@ export const attributes = {
 		type: 'number',
 		default: 60,
 	},
+	hasCircleImg: {
+		type: 'boolean',
+		default: true,
+	},
 	slide_0_author: {
 		type: 'array',
 		source: 'children',
