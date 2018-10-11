@@ -23,10 +23,8 @@ Easily add testimonials to your editor.
 Firstly make sure that you have the Gutenberg plugin installed.
 
 1. Install the tautala plugin either via the WordPress plugin directory, or by uploading the files to your web server (in the /wp-content/plugins/ directory).
-1. Activate the tautala plugin through the 'Plugins' screen in WordPress
-1. Get your Mailchimp API key and List ID: To do this login to mailchimp and [follow these steps] (https://medium.com/@arcomito/grabbing-your-mailchimp-api-key-and-list-id-for-mailchimp-integration-22ef4b20792f)
-1. Add the tautala block to your editor, paste the API key/List ID into the block settings.
-1. Your mailchimp signup form will now show in the editor, adjust the settings to see how it will look before publishing.
+1. Activate the Tautala plugin through the 'Plugins' screen in WordPress
+1. Add the tautala block to your editor, and start adding testimonials.
 
 == Frequently Asked Questions ==
 
@@ -35,13 +33,7 @@ Firstly make sure that you have the Gutenberg plugin installed.
 We will continue adding features as requested. If you have a killer idea for a feature submit a support request and we will see what we can do.
 Note: we plan to release a premium version of the plugin which will likely receive new features first - this helps offset the cost of our development time.
 
-= The feed looks funny in I10 (Or other old browser)
-
-This plugin is laid out using Flexbox, we do not have plans to support older browsers as we believe they are holding back the web. However we can (if requested) release some code which you can add to your site's custom css in order to support certain browsers.
-
 == Screenshots ==
-
-1. Adding the tautala block to the editor and adjusting the settings.
 
 == Changelog ==
 
