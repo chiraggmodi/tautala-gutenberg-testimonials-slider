@@ -32,6 +32,7 @@ export default class tautalaEdit extends Component {
 			'editor--slides-container list-unstyled',
 			`columns-${ slides }`,
 			{ 'has-large-image': imgSize > 150 },
+			{ 'has-small-image': imgSize <= 150 },
 			{ 'has-circular-image': hasCircleImg }
 		);
 

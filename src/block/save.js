@@ -16,6 +16,7 @@ export default class tautalaSave extends Component {
 			'siema client--slides-container list-unstyled',
 			`columns-${ slides }`,
 			{ 'has-large-image': imgSize > 150 },
+			{ 'has-small-image': imgSize <= 150 },
 			{ 'has-circular-image': hasCircleImg }
 		);
 
